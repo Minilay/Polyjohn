@@ -29,18 +29,20 @@ public class Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         touchingObjs.Add(collision.gameObject);
-        if(collision.CompareTag("Ground"))
-        {
-            onGround++;
-        }
+        //if(collision.CompareTag("Ground"))
+        //{
+        //    onGround++;
+        //}
+        onGround++;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         touchingObjs.Remove(collision.gameObject);
-        if(collision.CompareTag("Ground"))
-        {
-            onGround--;
-        }
+        //if(collision.CompareTag("Ground"))
+        //{
+        //    onGround--;
+        //}
+        onGround--;
     }
 
     // Update is called once per frame
