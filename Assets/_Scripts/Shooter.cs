@@ -35,17 +35,20 @@ public class Shooter : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10;
         mouseWorldPosition = mainCam.ScreenToWorldPoint(mousePos);
-        go.transform.position = transform.position + Vector3.up * 0.5f + (mouseWorldPosition - transform.position).normalized;
-        Vector3 aimingDirection = mouseWorldPosition - transform.position;
+        Vector3 playerPos = transform.position + Vector3.up * 0.5f;
+        go.transform.position = playerPos + (mouseWorldPosition - transform.position).normalized*0.1f;
+        Vector3 aimingDirection = mouseWorldPosition - playerPos;
         float angle = Mathf.Atan2(aimingDirection.y, aimingDirection.x);
         go.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg - 90);
-        go.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition - transform.position).normalized * shootPower * 2, ForceMode2D.Impulse);
+        go.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition - playerPos).normalized * shootPower * 2, ForceMode2D.Impulse);
 
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        Vector3 playerPos = transform.position + Vector3.up * 0.5f;
+
+        if (Input.GetMouseButtonDown(0))
         {
             if (!knifeExist)
             {
@@ -63,8 +66,8 @@ public class Shooter : MonoBehaviour
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = 10;
                 mouseWorldPosition = mainCam.ScreenToWorldPoint(mousePos);
-                pr.transform.position = transform.position +Vector3.up*0.5f + (mouseWorldPosition-transform.position).normalized;
-                Vector3 aimingDirection = mouseWorldPosition -transform.position;
+                pr.transform.position = playerPos + (mouseWorldPosition-playerPos).normalized*0.1f;
+                Vector3 aimingDirection = mouseWorldPosition - playerPos;
                 float angle = Mathf.Atan2(aimingDirection.y, aimingDirection.x);
                 pr.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg - 90);
             }
@@ -84,7 +87,7 @@ public class Shooter : MonoBehaviour
                 Destroy(pr);
             }
             
-            knifeExist = knifeExist ? false : true;
+            knifeExist = !knifeExist;
         }
 
         if(Input.GetMouseButtonDown(1))

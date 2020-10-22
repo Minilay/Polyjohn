@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5837768506614152886}
   - component: {fileID: 3812972226369364521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6406492597152337866}
   - component: {fileID: 1469767700706272409}
   - component: {fileID: 3713936554476496224}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kunai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
