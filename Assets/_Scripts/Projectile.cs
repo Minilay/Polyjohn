@@ -6,13 +6,13 @@ public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody2D rigid;
-    public BoxCollider2D coll;
+    public EdgeCollider2D coll;
 
     bool inActive = false;
     void Start()
     {
         rigid = GetComponent < Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
+        coll = GetComponent<EdgeCollider2D>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
