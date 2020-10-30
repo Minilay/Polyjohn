@@ -8,7 +8,6 @@ public class Shooter : MonoBehaviour
     [Header("Inspector")]
     public Camera mainCam;
     public GameObject projectile;
-    public GameObject kunai;
     public float shootPower;
     [Header("Dynamic")]
     public static Shooter S;
@@ -30,19 +29,6 @@ public class Shooter : MonoBehaviour
         
     }
 
-    void InstantShoot(GameObject go)
-    {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10;
-        mouseWorldPosition = mainCam.ScreenToWorldPoint(mousePos);
-        Vector3 playerPos = transform.position + Vector3.up * 0.5f;
-        go.transform.position = playerPos + (mouseWorldPosition - transform.position).normalized*0.1f;
-        Vector3 aimingDirection = mouseWorldPosition - playerPos;
-        float angle = Mathf.Atan2(aimingDirection.y, aimingDirection.x);
-        go.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg - 90);
-        go.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition - playerPos).normalized * shootPower * 2, ForceMode2D.Impulse);
-
-    }
     // Update is called once per frame
     void Update()
     {
@@ -90,10 +76,6 @@ public class Shooter : MonoBehaviour
             knifeExist = !knifeExist;
         }
 
-        if(Input.GetMouseButtonDown(1))
-        {
-            GameObject kn = Instantiate<GameObject>(kunai);
-            InstantShoot(kn);
-        }
+        
     }
 }

@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour
 {
     // Start is called before the first frame update    
     [Header("Inspector")]
-    public Animator anim;
+//    public Animator anim;
     public float speed;
     public float jumpPower;
     public Rigidbody2D rigid;
@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         touchingObjs.Add(collision.gameObject);
         //if(collision.CompareTag("Ground"))
@@ -34,8 +34,9 @@ public class Controller : MonoBehaviour
         //    onGround++;
         //}
         onGround++;
+
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         touchingObjs.Remove(collision.gameObject);
         //if(collision.CompareTag("Ground"))
@@ -43,6 +44,7 @@ public class Controller : MonoBehaviour
         //    onGround--;
         //}
         onGround--;
+
     }
 
     // Update is called once per frame
@@ -56,17 +58,17 @@ public class Controller : MonoBehaviour
 
 
         transform.localScale = new Vector2(velo >= 0 ? 1 : -1, 1);
-        anim.SetFloat("Speed", Mathf.Abs(velo));
+        //anim.SetFloat("Speed", Mathf.Abs(velo));
 
 
     }
     private void Update()
     {
         Hit = Input.GetMouseButton(0);
-        anim.SetBool("Hit", Hit);
+        //anim.SetBool("Hit", Hit);
 
         Shield = Input.GetMouseButton(1);
-        anim.SetBool("Shield", Shield);
+        //anim.SetBool("Shield", Shield);
 
         if(Input.GetButtonDown("Jump") && onGround > 0)
         {

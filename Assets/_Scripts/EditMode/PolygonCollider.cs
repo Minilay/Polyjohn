@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//[ExecuteInEditMode]
+public class PolygonCollider : MonoBehaviour
+{
+    // Start is called before the first frame update
+
+    public EdgeCollider2D edge;
+    public int polygonCount;
+    public float length;
+    
+    void polygonMaker()
+    {
+        List<Vector2> vert = new List<Vector2>();
+        float angle = 360 / polygonCount;
+        float sum = 0;
+        for(int i = 0; i < polygonCount; i++)
+        {
+
+            float   x = Mathf.Cos(sum * Mathf.Deg2Rad) * length,
+                    y = Mathf.Sin(sum * Mathf.Deg2Rad) * length;
+            vert.Add(new Vector2(x, y));
+
+            sum += angle;
+        }
+
+        vert.Add(vert[0]);
+        edge.points = vert.ToArray();
+
+    }
+
+    private void Awake()
+    {
+        polygonMaker();
+    }
+
+
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            print("Hola");
+        }
+    }
+}
