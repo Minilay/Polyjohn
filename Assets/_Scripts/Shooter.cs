@@ -12,7 +12,7 @@ public class Shooter : MonoBehaviour
     public List<Sprite> textures;
     public SpriteRenderer rend;
     public PolygonCollider coll;
-
+    public ParticleSystem particlesIn;
     [Header("Dynamic")]
     public static Shooter S;
     public Vector3 mouseWorldPosition;
@@ -21,39 +21,21 @@ public class Shooter : MonoBehaviour
     public bool knifeExist;
     public bool aimMode;
 
-    public int cnt = 0;
+    public int ver = 3;
 
     private void Awake()
     {
         S = this;
         rigid = GetComponent<Rigidbody2D>();
 
-        rend.sprite = textures[0];//Initial sprite
-    }
-    void Start()
-    {
-        
-    }
-
-    void InstantShoot(GameObject go)
-    {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10;
-        mouseWorldPosition = mainCam.ScreenToWorldPoint(mousePos);
-        Vector3 playerPos = transform.position + Vector3.up * 0.5f;
-        go.transform.position = playerPos + (mouseWorldPosition - transform.position).normalized*0.1f;
-        Vector3 aimingDirection = mouseWorldPosition - playerPos;
-        float angle = Mathf.Atan2(aimingDirection.y, aimingDirection.x);
-        go.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg - 90);
-        go.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition - playerPos).normalized * shootPower * 2, ForceMode2D.Impulse);
-
+        polygonShifting();//Initial sprite  
     }
    
     public void polygonShifting()
     {
-        rend.sprite = textures[cnt];
+        rend.sprite = textures[ver];
 
-        coll.polygonCount = 6-cnt;
+        coll.polygonCount = ver + 3;
     }
     void VertexShooting()
     { 
@@ -64,6 +46,7 @@ public class Shooter : MonoBehaviour
             {
                 pr = Instantiate<GameObject>(vertex);
                 aimMode = true;
+                particlesIn.Play();
             }
         }
         if(Input.GetMouseButton(0))
@@ -85,6 +68,7 @@ public class Shooter : MonoBehaviour
             {
                 pr.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition-transform.position).normalized*shootPower,ForceMode2D.Impulse);
                 aimMode = false;
+                particlesIn.Stop();
             }
             else
             {
@@ -92,7 +76,7 @@ public class Shooter : MonoBehaviour
                 rigid.velocity = Vector3.zero;
 
                 //Sprite changing
-                cnt++;
+                ver--;
                 polygonShifting();
                 
                 Destroy(pr);
@@ -102,7 +86,7 @@ public class Shooter : MonoBehaviour
     }
     void Update()
     {
-        if(cnt < 3)
+        if(ver > 0)
         VertexShooting();
     }
 }

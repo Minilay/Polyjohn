@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Vertex
+  m_Name: Trail
   m_Shader: {fileID: -6465566751694194690, guid: 83135fca610c9b745bcde2215ffedc29,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -21,13 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 015d674033ec20447beda2c86c45eb81, type: 3}
+        m_Texture: {fileID: 2800000, guid: b777ff0566e772245b0311c61dfba9da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 015d674033ec20447beda2c86c45eb81, type: 3}
+        m_Texture: {fileID: 2800000, guid: b777ff0566e772245b0311c61dfba9da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_79CB0594: {r: 3.5648696, g: 3.5648696, b: 3.5648696, a: 0}
+    - Color_79CB0594: {r: 2.670157, g: 1.2746751, b: 0, a: 0}

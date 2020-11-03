@@ -12,9 +12,10 @@ public class Controller : MonoBehaviour
     public float speed;
     public float jumpPower;
     public Rigidbody2D rigid;
-
+    public float maxAngVelo;
     [Header("Dynamic")]
     public float velo;
+    public float angVelo;
     public bool Hit;
     public bool Shield;
     public int onGround;
@@ -26,7 +27,7 @@ public class Controller : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         touchingObjs.Add(collision.gameObject);
         //if(collision.CompareTag("Ground"))
@@ -36,7 +37,7 @@ public class Controller : MonoBehaviour
         onGround++;
 
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         touchingObjs.Remove(collision.gameObject);
         //if(collision.CompareTag("Ground"))
@@ -50,13 +51,23 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        velo = Input.GetAxisRaw("Horizontal") * speed;
+        velo = -Input.GetAxisRaw("Horizontal") * speed;
         dir = new Vector2(velo * Time.deltaTime, transform.position.y);
-        
-
-        rigid.velocity = new Vector2(velo * Time.deltaTime, rigid.velocity.y);
 
 
+        //rigid.velocity = new Vector2(velo * Time.deltaTime, rigid.velocity.y);
+        rigid.AddTorque(velo);
+        angVelo = rigid.angularVelocity;
+      
+        if (angVelo > maxAngVelo)
+        {
+            rigid.angularVelocity = maxAngVelo;
+        }
+        if (angVelo < -maxAngVelo)
+        {
+            rigid.angularVelocity = -maxAngVelo;
+        }
+        //rigid.angularVelocity = velo;
         transform.localScale = new Vector2(velo >= 0 ? 1 : -1, 1);
         //anim.SetFloat("Speed", Mathf.Abs(velo));
 
@@ -72,6 +83,7 @@ public class Controller : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && onGround > 0)
         {
+            
             rigid.AddForce(Vector2.up * jumpPower);
             rigid.velocity = new Vector2(rigid.velocity.x, 0);
         }
