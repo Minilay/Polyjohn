@@ -8,21 +8,27 @@ public class PlatformButton : MonoBehaviour
     
     SpriteRenderer render;
     Color defaultColor;
-    private void OnCollisionEnter2D(Collision2D collision)
+    public float delay;
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
             render.color = Color.green;
             interactionObj.SetActive(false);
         }
     }
+    
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void Disappear()
+    {
+        render.color = defaultColor;
+        interactionObj.SetActive(true);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.transform.CompareTag("Player"))
         {
-            render.color = defaultColor;
-            interactionObj.SetActive(true);
+            Invoke("Disappear", delay);
         }
     }
     void Start()

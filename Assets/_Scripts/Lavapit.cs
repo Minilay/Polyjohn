@@ -11,7 +11,8 @@ public class Lavapit : MonoBehaviour
     {
         if(collision.transform.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Scene 0");
+            //SceneManager.LoadScene("Scene 0");
+            collision.gameObject.GetComponent<PolyJohn>().Ded();
         }
     }
     void Start()

@@ -9,10 +9,13 @@ public class Brain : MonoBehaviour
     public List<GameObject> pois;
     public int speed;
     public float maxAngVelo;
+    [Header("Projectile")]
+    public ParticleSystem pts;
     [Header("Dynamic")]
     public int currentPoi;
     private Rigidbody2D rigid;
     public GameObject proj;
+    public Vector3 aimingDirection;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,6 +31,7 @@ public class Brain : MonoBehaviour
             collision.GetComponent<CircleCollider2D>().enabled = false;
             collision.transform.position = transform.position;
             proj = collision.gameObject;
+           
         }
     }
     void Start()
@@ -62,5 +66,8 @@ public class Brain : MonoBehaviour
         {
             proj.transform.position = transform.position;
         }
+
+
+
     }
 }

@@ -11,8 +11,8 @@ public class Coin : MonoBehaviour
         print("trig");
         if(collision.CompareTag("Player"))
         {
-            Shooter.S.ver++;
-            Shooter.S.polygonShifting();
+            PolyJohn.S.ver++;
+            PolyJohn.S.polygonShifting();
 
             Destroy(gameObject);
         }

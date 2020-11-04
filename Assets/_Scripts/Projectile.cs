@@ -40,19 +40,19 @@ public class Projectile : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
-    {
-        if(!inActive)
-        {
-            if(Shooter.S.aimMode)
-            {
-                coll.enabled = false;
-            }
-            else
-            {
-                coll.enabled = true;
-            }
-        }
+    //void Update()
+    //{
+    //    if(!inActive)
+    //    {
+    //        if(PolyJohn.S.aimMode)
+    //        {
+    //            coll.enabled = false;
+    //        }
+    //        else
+    //        {
+    //            coll.enabled = true;
+    //        }
+    //    }
        
-    }
+    //}
 }
