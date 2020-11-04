@@ -87,11 +87,11 @@ public class Shooter : MonoBehaviour
             pr.GetComponent<Projectile>().cancel = true;
             Destroy(pr);
         }
-        if(Input.GetKeyDown(KeyCode.Tab) && pr != null)
+        if(Input.GetKey(KeyCode.Tab) && pr != null)
         {
             mainCam.GetComponent<CamFollower>().poi = pr;
         }
-        if(Input.GetKeyUp(KeyCode.Tab))
+        else
         {
             mainCam.GetComponent<CamFollower>().poi = this.gameObject;
         }
