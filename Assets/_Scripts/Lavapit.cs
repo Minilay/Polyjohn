@@ -9,10 +9,8 @@ public class Lavapit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Dead");
         if(collision.transform.CompareTag("Player"))
         {
-            print("Dead");
             SceneManager.LoadScene("Scene 0");
         }
     }

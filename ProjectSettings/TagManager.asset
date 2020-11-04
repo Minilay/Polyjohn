@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - poi
+  - Enemy
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - ProjectileFriendly
   - Player
   - Mirror
-  - 
-  - 
+  - Enemy
+  - poi
   - 
   - 
   - 

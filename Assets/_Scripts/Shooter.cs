@@ -9,17 +9,18 @@ public class Shooter : MonoBehaviour
     public Camera mainCam;
     public GameObject vertex;
     public float shootPower;
-    public List<Sprite> textures;
     public SpriteRenderer rend;
     public PolygonCollider coll;
     public ParticleSystem particlesIn;
+    public Animator anim;
+    public List<Sprite> textures;
     [Header("Dynamic")]
-    public static Shooter S;
     public Vector3 mouseWorldPosition;
     public GameObject pr;
     public Rigidbody2D rigid;
     public bool knifeExist;
     public bool aimMode;
+    public static Shooter S;
 
     public int ver = 3;
 
@@ -66,11 +67,45 @@ public class Shooter : MonoBehaviour
         {
             if(!knifeExist)
             {
-                pr.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition-transform.position).normalized*shootPower,ForceMode2D.Impulse);
+                //pr.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition-transform.position).normalized*shootPower,ForceMode2D.Impulse);
+                pr.GetComponent<Rigidbody2D>().velocity = (mouseWorldPosition - transform.position).normalized * shootPower; 
+
                 aimMode = false;
                 particlesIn.Stop();
             }
             else
+            {
+                anim.SetBool("In", true);
+                
+            }   
+            knifeExist = !knifeExist;
+        }
+
+        if(Input.GetMouseButtonDown(1) && knifeExist)
+        {
+            knifeExist = !knifeExist;
+            pr.GetComponent<Projectile>().cancel = true;
+            Destroy(pr);
+        }
+        if(Input.GetKeyDown(KeyCode.Tab) && pr != null)
+        {
+            mainCam.GetComponent<CamFollower>().poi = pr;
+        }
+        if(Input.GetKeyUp(KeyCode.Tab))
+        {
+            mainCam.GetComponent<CamFollower>().poi = this.gameObject;
+        }
+    }
+
+    
+    void Update()
+    {
+        if(ver > 0)
+        VertexShooting();
+
+        if(anim.GetBool("In") == true)
+        {
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("PolyJohn_in"))
             {
                 transform.position = pr.transform.position;
                 rigid.velocity = Vector3.zero;
@@ -78,15 +113,11 @@ public class Shooter : MonoBehaviour
                 //Sprite changing
                 ver--;
                 polygonShifting();
-                
+
                 Destroy(pr);
-            }   
-            knifeExist = !knifeExist;
+                anim.SetBool("In", false);
+            }
+
         }
-    }
-    void Update()
-    {
-        if(ver > 0)
-        VertexShooting();
     }
 }

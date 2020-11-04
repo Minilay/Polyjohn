@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hexajohn
+  m_Name: Polyjohn
   m_Shader: {fileID: -6465566751694194690, guid: 83135fca610c9b745bcde2215ffedc29,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -30,4 +30,4 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_79CB0594: {r: 2, g: 2, b: 2, a: 0}
+    - Color_79CB0594: {r: 2.670157, g: 2.670157, b: 2.670157, a: 0}
