@@ -2133,7 +2133,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 316238002158554098, guid: 95ef1b1d4bbca9649a95b1b0cd1ab6d6, type: 2}
@@ -2173,7 +2173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.77, y: -19.41}
+  m_AnchoredPosition: {x: 28.78, y: -19.41}
   m_SizeDelta: {x: 9.880138, y: 1.1834111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &103735413
@@ -10654,7 +10654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shoot at this cutest polygon. He will carry your vertex.
+  m_text: Shoot at this cutest polygon. He will carry your projectile through lava.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ef1b1d4bbca9649a95b1b0cd1ab6d6, type: 2}
   m_sharedMaterial: {fileID: 316238002158554098, guid: 95ef1b1d4bbca9649a95b1b0cd1ab6d6,
@@ -10724,12 +10724,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 3.091257, w: -1.4623594}
   m_textInfo:
     textComponent: {fileID: 532399600}
-    characterCount: 56
+    characterCount: 73
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 11
+    wordCount: 12
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -23699,7 +23699,7 @@ PrefabInstance:
     - target: {fileID: 5004550042868225113, guid: 4f9ffb5a709f4b945b848bd6794e4f13,
         type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5280001301147598616, guid: 4f9ffb5a709f4b945b848bd6794e4f13,
         type: 3}
@@ -38017,7 +38017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You loose one vertex per shoot. Every triangle restores one vertex
+  m_text: You can hold tab to change camera view on projectile.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ef1b1d4bbca9649a95b1b0cd1ab6d6, type: 2}
   m_sharedMaterial: {fileID: 316238002158554098, guid: 95ef1b1d4bbca9649a95b1b0cd1ab6d6,
@@ -38087,12 +38087,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 3.091257, w: -1.4623594}
   m_textInfo:
     textComponent: {fileID: 1895972981}
-    characterCount: 66
+    characterCount: 53
     spriteCount: 0
-    spaceCount: 10
-    wordCount: 11
+    spaceCount: 9
+    wordCount: 10
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
