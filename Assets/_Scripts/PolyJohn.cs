@@ -22,7 +22,6 @@ public class PolyJohn: MonoBehaviour
     public GameObject pr;
     public Rigidbody2D rigid;
     public bool knifeExist;
-    public bool aimMode;
     public static PolyJohn S;
 
     public int ver = 3;
@@ -49,7 +48,6 @@ public class PolyJohn: MonoBehaviour
             if (!knifeExist)
             {
                 pr = Instantiate<GameObject>(vertex);
-                aimMode = true;
                 particlesIn.Play();
 
             }
@@ -74,7 +72,6 @@ public class PolyJohn: MonoBehaviour
                 //pr.GetComponent<Rigidbody2D>().AddForce((mouseWorldPosition-transform.position).normalized*shootPower,ForceMode2D.Impulse);
                 pr.GetComponent<Rigidbody2D>().velocity = (mouseWorldPosition - transform.position).normalized * shootPower; 
 
-                aimMode = false;
                 particlesIn.Stop();
             }
             else
@@ -111,7 +108,7 @@ public class PolyJohn: MonoBehaviour
         if (Input.GetMouseButtonDown(1) && knifeExist)
         {
             knifeExist = !knifeExist;
-            pr.GetComponent<Projectile>().cancel = true;
+            pr.GetComponent<Projectile>().cancel = true; //Starts Destroy animation
             Destroy(pr);
         }
         if (Input.GetKey(KeyCode.Tab) && pr != null)

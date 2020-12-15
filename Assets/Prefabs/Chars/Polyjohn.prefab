@@ -9694,7 +9694,7 @@ GameObject:
   - component: {fileID: 2968292223187278571}
   - component: {fileID: 636525608384483707}
   m_Layer: 10
-  m_Name: Hexajohn
+  m_Name: Polyjohn
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9777,6 +9777,12 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   vertex: {fileID: 2904022501003493319, guid: 847559b187065ab4894d6ea6952262f7, type: 3}
   shootPower: 40
+  rend: {fileID: 5381767892799587860}
+  coll: {fileID: 1164473409361202859}
+  particlesIn: {fileID: 1754275114}
+  deathParticles: {fileID: 8528930061528449486, guid: dc0e24e6c7a289c44b5243c1a12daf04,
+    type: 3}
+  anim: {fileID: 636525608384483707}
   textures:
   - {fileID: 4987730536987318075, guid: c404ea4bfc4c15440950c3d342218eb5, type: 3}
   - {fileID: 5356480917945907187, guid: c404ea4bfc4c15440950c3d342218eb5, type: 3}
@@ -9786,15 +9792,10 @@ MonoBehaviour:
   - {fileID: 8615972295827768437, guid: c404ea4bfc4c15440950c3d342218eb5, type: 3}
   - {fileID: 2411791555271021599, guid: c404ea4bfc4c15440950c3d342218eb5, type: 3}
   - {fileID: -8732576015607172247, guid: c404ea4bfc4c15440950c3d342218eb5, type: 3}
-  rend: {fileID: 5381767892799587860}
-  coll: {fileID: 1164473409361202859}
-  particlesIn: {fileID: 1754275114}
-  anim: {fileID: 636525608384483707}
   mouseWorldPosition: {x: 0, y: 0, z: 0}
   pr: {fileID: 0}
   rigid: {fileID: 0}
   knifeExist: 0
-  aimMode: 0
   ver: 3
 --- !u!68 &2415019013418161366
 EdgeCollider2D:
