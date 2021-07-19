@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Brain : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Modifier Access
     [Header("Inspector")]
     public List<GameObject> pois;
     public int speed;
@@ -19,13 +19,13 @@ public class Brain : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("poi"))
+        if(collision.CompareTag("poi")) //String Check is very bad
         {
             currentPoi++;
             currentPoi %= pois.Count;
         }
 
-        if(collision.CompareTag("projectile"))
+        if(collision.CompareTag("projectile")) //String Check is very bad
         {
             collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.GetComponent<CircleCollider2D>().enabled = false;
@@ -34,15 +34,16 @@ public class Brain : MonoBehaviour
            
         }
     }
-    void Start()
+    
+    private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();   
     }
 
-    // Update is called once per frame
-    void Update()
+   private void Update()
     {
-        GameObject poi = pois[currentPoi];
+        var poi = pois[currentPoi];
+        
         if(transform.position.x < poi.transform.position.x)
         {
             rigid.AddTorque(-speed);
@@ -52,7 +53,9 @@ public class Brain : MonoBehaviour
             rigid.AddTorque(speed);
 
         }
-        float angVelo = rigid.angularVelocity;
+        
+        var angVelo = rigid.angularVelocity;
+        
         if (angVelo > maxAngVelo)
         {
             rigid.angularVelocity = maxAngVelo;
@@ -66,8 +69,5 @@ public class Brain : MonoBehaviour
         {
             proj.transform.position = transform.position;
         }
-
-
-
     }
 }
